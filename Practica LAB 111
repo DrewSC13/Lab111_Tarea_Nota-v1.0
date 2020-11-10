@@ -99,7 +99,9 @@ if decrypted == "rxfsuz13":
     print ("<<<< Welcome", username, ">>>>") 
 
 else : 
-    print ("INTRUDER ALERT !!!!" , "SYSTEM LOCKED")
+    print ("INTRUDER ALERT !!!!")
+    print ("SYSTEM LOCKED!!!")
+    print("")
     
 print("")
 print("************//PROGRAM//************")
