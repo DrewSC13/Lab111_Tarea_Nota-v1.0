@@ -1,0 +1,237 @@
+"""Practica LAB 111
+Nombre: Claudio Andres Sanjines Cuellar
+Paralelo: "F"""
+
+"""1. Crear un inicio de sesion que solicite el usuario y la contrasena del 
+    usuario.
+        a. Ambos datos deben de estar en los comentarios del codigo para sus 
+           respectivas pruebas.
+        
+        b. Para verificar la contrasena se debe crear un algoritmo de 
+           encriptacion.
+        
+        Un algoritmo de encriptacion basico es el cifrado basico es el cifrado 
+        cesar, el cual indica qie habra in desplazamiento de N caracteres. Por
+        ejemplo, la palabra hols con desplazamiento 1 seria ipmb (porque cada
+        caracter se recorre 1 espacio a la derecha). En este ejercicio se les 
+        pide creen su propio algoritmo de encriptacion utilizando cualquier tipo
+        de dato que deseen.
+        
+        c. [Opcional] Verificar si el algoritmo de encriptacion que crearon en
+           el inciso b es una funcion biyectiva o inyectiva. Ponerlo en los 
+           comentarios en el codigo y marcarlo con la palabra OPCIONAL
+           
+   2. Una vez que el usuario ingrese desplegar un menu (figura 1.) con las 
+      siguientes opciones:
+        a. Division de 2 Numeros:
+            I. Ingresa 2 numeros por teclado, calcula la division y el modulo
+               sin utilizar los operadores /, % ni librerias
+            II. Se rrecomienda revisar el fundamento matematico de la division
+        
+        b. Divisores:
+            I. Leer un numero entero N mayor a 99999999999999, mostrar los 
+               divisores del numero sin utilizar los operadores /, % ni librerias
+               
+        c. Numeros Capicua:
+            I. Leer un numero entero N mayor a 99999999, hallar los numeros y 
+               verificar si son capicua.
+            II. Por ejemplo, si se tiene abcdefgh los numemros de 3 digitos 
+                seran abc, bcd, cde, def, efg, fgh.
+            III. Existen mas combinaciones de los numeros de 3 digitos, pero
+                 no nos vamos a complicar mas
+            IV. No se permite utilizar los operadores /, % ni librerias
+            
+        d. Cambio de base:
+            I. Leer un numero entero N en base decimal y una base X. Convertir
+               el numero N a la base X sin utilizar los operadores /, % ni 
+               librerias.
+        e. Salir:
+            I. El programa finaliza.
+        
+        f. Tras finalizar cada una de estas tareas / operaciones se debe mostrar
+           el menu de nuevo, esto mientras el usuario no seleccione la opcion de
+           salir.
+          
+        g. Mejorar la interfaz que se le presenta al usuario desde la consola,
+           es decir, adicionar caracteres para crear disenos o mensajes no 
+           genericos """
+
+
+print("<<<CiberSecurity System>>>") 
+print("<<<<<<<<<Welcome>>>>>>>>>") 
+print("")
+print("************USERNAME************")
+
+username = input("Username:") 
+if username == "Drew" : 
+    print ("Sucessfull") 
+else : 
+    print ("Incorrect Username") 
+
+print("")
+print("************PASSWORD************")
+
+password = input("Password: ")
+
+print("")
+print("************DECRYPTING************")
+
+if password  == password.upper():
+    abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+else:
+    abc = "abcdefghijklmnopqrstuvwxyz"
+    
+a = int (input("Desplazamiento: "))
+
+decry=""
+
+for c in password:
+    if c in abc:
+        decry += abc[(abc.index(c) + a % (len(abc)))]
+    else:
+        decry += c
+    
+print('decrypted password', decry)
+    
+decrypted = decry
+if decrypted == "rxfsuz13":
+    print ("*******ACCESS GRANTED*******") 
+    print ("<<<< Welcome", username, ">>>>") 
+
+else : 
+    print ("INTRUDER ALERT !!!!" , "SYSTEM LOCKED")
+    
+print("")
+print("************//PROGRAM//************")
+print("")
+
+if decrypted == "rxfsuz13" and username == "Drew":
+    def pedirNumeroEntero():
+ 
+        correcto=False
+        num=0
+        
+        while(not correcto):
+            try:
+                num = int(input("Introduce un numero: "))
+                correcto=True
+            except ValueError:
+                print('Error, introduce un numero')
+     
+        return num
+ 
+salir = False
+opcion = 0
+ 
+while not salir:
+    print("")
+    print ("OPCIONES")
+    print ("1. Division de dos numeros")
+    print ("2. Divisores")
+    print ("3. Numeros Capicua")
+    print ("4. Cambio de Base")
+    print ("5. Salir")
+     
+    print ("Elige una opcion")
+    print("")
+ 
+    opcion = pedirNumeroEntero()
+ 
+    if opcion == 1:
+        
+        p,q=1,0
+        Dividendo=int(input("Ingresa Dividendo: "))
+        Divisor=int(input("Ingresa Divisor: "))
+        
+        if(Dividendo>=Divisor):
+            while((Dividendo-Divisor)>=q): 
+                q=Divisor*p
+                p=p+1
+            print("El cociente es "+str(p-1)+" y el residuo es "+str((Dividendo-q)))
+            print("")
+            
+        else:
+            print("el denominador debe ser menor")
+            print("")
+            
+    elif opcion == 2:
+        
+        print("")
+        print('INGRESE UN NUMERO')
+        n = int(input('Número: '))
+        d = ''
+
+        for divisor in range(1, n + 1):
+            for div in range(1, n + 1):
+                if (div * divisor) == n:
+                    print(div,'x',divisor,'=',div*divisor)
+                    d += str(divisor) + ' '
+
+        print('Los divisores de', n,'son', d)
+        print("")
+        
+    elif opcion == 3:
+        
+        def invierte_numero(numero):
+            num_invertido = 0
+            while numero > 0:
+                dig = numero % 10
+                num_invertido *= 10
+                num_invertido += dig
+                numero //= 10
+            return num_invertido
+
+        def es_palindromo(numero):
+            num_invertido = invierte_numero(numero)
+            return numero == num_invertido 
+
+        n=int(input("Ingrese un número: "))
+        n = abs(n)
+        if es_palindromo(n):
+            print("Es capicua")
+            print("")
+        else:
+            print("No es capicua") 
+            print("")
+            
+    elif opcion == 4:
+        def find_pot(n, b):
+            fact = 1
+            while fact <= n:
+                fact *= b
+            return fact//b
+
+        def print_digit_basis(dig):
+            if dig < 10:
+                print("{:d}".format(dig), end="")
+            else:
+                dig_trans = chr(dig - 10 + ord('A'))
+                print("{}".format(dig_trans), end="") 
+
+        def print_another_basis(n, b):
+            fact = find_pot(n, b)
+            while True:
+                dig = n // fact
+                print_digit_basis(dig)
+                n %= fact
+                fact //= b;
+                if fact == 0:
+                    break
+        
+        n=int(input("Ingrese número en base 10: "))
+        b=int(input("Ingrese base: "))
+
+        if b >= 2 and b <= 36:
+            print_another_basis(n, b)
+            print("")
+        else:
+            print("Ingresar base entre 2 y 36")
+            print("")
+    
+    elif opcion == 5:
+        salir = True
+    else:
+        print ("Introduce un numero entre 1 y 5")
+        print("")
+ 
+print ("Fin")
