@@ -122,118 +122,118 @@ if decrypted == "rxfsuz13" and username == "Drew":
      
         return num
  
-salir = False
-opcion = 0
+    salir = False
+    opcion = 0
  
-while not salir:
-    print("")
-    print ("OPCIONES")
-    print ("1. Division de dos numeros")
-    print ("2. Divisores")
-    print ("3. Numeros Capicua")
-    print ("4. Cambio de Base")
-    print ("5. Salir")
+    while not salir:
+        print("")
+        print ("OPCIONES")
+        print ("1. Division de dos numeros")
+        print ("2. Divisores")
+        print ("3. Numeros Capicua")
+        print ("4. Cambio de Base")
+        print ("5. Salir")
+         
+        print ("Elige una opcion")
+        print("")
      
-    print ("Elige una opcion")
-    print("")
- 
-    opcion = pedirNumeroEntero()
- 
-    if opcion == 1:
-        
-        p,q=1,0
-        Dividendo=int(input("Ingresa Dividendo: "))
-        Divisor=int(input("Ingresa Divisor: "))
-        
-        if(Dividendo>=Divisor):
-            while((Dividendo-Divisor)>=q): 
-                q=Divisor*p
-                p=p+1
-            print("El cociente es "+str(p-1)+" y el residuo es "+str((Dividendo-q)))
-            print("")
+        opcion = pedirNumeroEntero()
+     
+        if opcion == 1:
             
-        else:
-            print("el denominador debe ser menor")
-            print("")
+            p,q=1,0
+            Dividendo=int(input("Ingresa Dividendo: "))
+            Divisor=int(input("Ingresa Divisor: "))
             
-    elif opcion == 2:
-        
-        print("")
-        print('INGRESE UN NUMERO')
-        n = int(input('Número: '))
-        d = ''
-
-        for divisor in range(1, n + 1):
-            for div in range(1, n + 1):
-                if (div * divisor) == n:
-                    print(div,'x',divisor,'=',div*divisor)
-                    d += str(divisor) + ' '
-
-        print('Los divisores de', n,'son', d)
-        print("")
-        
-    elif opcion == 3:
-        
-        def invierte_numero(numero):
-            num_invertido = 0
-            while numero > 0:
-                dig = numero % 10
-                num_invertido *= 10
-                num_invertido += dig
-                numero //= 10
-            return num_invertido
-
-        def es_palindromo(numero):
-            num_invertido = invierte_numero(numero)
-            return numero == num_invertido 
-
-        n=int(input("Ingrese un número: "))
-        n = abs(n)
-        if es_palindromo(n):
-            print("Es capicua")
-            print("")
-        else:
-            print("No es capicua") 
-            print("")
-            
-    elif opcion == 4:
-        def find_pot(n, b):
-            fact = 1
-            while fact <= n:
-                fact *= b
-            return fact//b
-
-        def print_digit_basis(dig):
-            if dig < 10:
-                print("{:d}".format(dig), end="")
+            if(Dividendo>=Divisor):
+                while((Dividendo-Divisor)>=q): 
+                    q=Divisor*p
+                    p=p+1
+                print("El cociente es "+str(p-1)+" y el residuo es "+str((Dividendo-q)))
+                print("")
+                
             else:
-                dig_trans = chr(dig - 10 + ord('A'))
-                print("{}".format(dig_trans), end="") 
-
-        def print_another_basis(n, b):
-            fact = find_pot(n, b)
-            while True:
-                dig = n // fact
-                print_digit_basis(dig)
-                n %= fact
-                fact //= b;
-                if fact == 0:
-                    break
-        
-        n=int(input("Ingrese número en base 10: "))
-        b=int(input("Ingrese base: "))
-
-        if b >= 2 and b <= 36:
-            print_another_basis(n, b)
+                print("el denominador debe ser menor")
+                print("")
+                
+        elif opcion == 2:
+            
             print("")
-        else:
-            print("Ingresar base entre 2 y 36")
-            print("")
+            print('INGRESE UN NUMERO')
+            n = int(input('Número: '))
+            d = ''
     
-    elif opcion == 5:
-        salir = True
-    else:
-        print ("Introduce un numero entre 1 y 5")
-        print("")
+            for divisor in range(1, n + 1):
+                for div in range(1, n + 1):
+                    if (div * divisor) == n:
+                        print(div,'x',divisor,'=',div*divisor)
+                        d += str(divisor) + ' '
+    
+            print('Los divisores de', n,'son', d)
+            print("")
+            
+        elif opcion == 3:
+            
+            def invierte_numero(numero):
+                num_invertido = 0
+                while numero > 0:
+                    dig = numero % 10
+                    num_invertido *= 10
+                    num_invertido += dig
+                    numero //= 10
+                return num_invertido
+    
+            def es_palindromo(numero):
+                num_invertido = invierte_numero(numero)
+                return numero == num_invertido 
+    
+            n=int(input("Ingrese un número: "))
+            n = abs(n)
+            if es_palindromo(n):
+                print("Es capicua")
+                print("")
+            else:
+                print("No es capicua") 
+                print("")
+                
+        elif opcion == 4:
+            def find_pot(n, b):
+                fact = 1
+                while fact <= n:
+                    fact *= b
+                return fact//b
+    
+            def print_digit_basis(dig):
+                if dig < 10:
+                    print("{:d}".format(dig), end="")
+                else:
+                    dig_trans = chr(dig - 10 + ord('A'))
+                    print("{}".format(dig_trans), end="") 
+    
+            def print_another_basis(n, b):
+                fact = find_pot(n, b)
+                while True:
+                    dig = n // fact
+                    print_digit_basis(dig)
+                    n %= fact
+                    fact //= b;
+                    if fact == 0:
+                        break
+            
+            n=int(input("Ingrese número en base 10: "))
+            b=int(input("Ingrese base: "))
+    
+            if b >= 2 and b <= 36:
+                print_another_basis(n, b)
+                print("")
+            else:
+                print("Ingresar base entre 2 y 36")
+                print("")
+        
+        elif opcion == 5:
+            salir = True
+        else:
+            print ("Introduce un numero entre 1 y 5")
+            print("")
  
 print ("Fin")
